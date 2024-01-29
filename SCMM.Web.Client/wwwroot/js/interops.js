@@ -1,11 +1,4 @@
 ﻿
-// Disable all context menus (i.e. right-click / long-touch)
-window.oncontextmenu = function (event) {
-    event.preventDefault();
-    event.stopPropagation();
-    return false;
-};
-
 // Interops for window functions
 var WindowInterop = WindowInterop || {};
 WindowInterop.open = (url) => {
