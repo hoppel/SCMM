@@ -12,7 +12,9 @@ namespace SCMM.Steam.API.Commands
 {
     public class LoginSteamProfileRequest : ICommand<LoginSteamProfileResponse>
     {
-        public string Claim { get; set; }
+        public IDictionary<string, string> AuthenticationProperties { get; set; }
+
+        public string NameId { get; set; }
     }
 
     public class LoginSteamProfileResponse
@@ -25,6 +27,21 @@ namespace SCMM.Steam.API.Commands
         private readonly SteamDbContext _db;
         private readonly ICommandProcessor _commandProcessor;
 
+        private static string[] AllowedAuthenticationPropertyNames =
+        {
+            ".AuthScheme",
+            ".claimed_id",
+            ".identity",
+            ".mode",
+            ".ns",
+            ".op_endpoint",
+            ".response_nonce",
+            ".return_to",
+            ".sig",
+            ".signed",
+            ".assoc_handle"
+        };
+
         public LoginSteamProfile(SteamDbContext db, ICommandProcessor commandProcessor)
         {
             _db = db;
@@ -33,9 +50,15 @@ namespace SCMM.Steam.API.Commands
 
         public async Task<LoginSteamProfileResponse> HandleAsync(LoginSteamProfileRequest request)
         {
+            // Sanity check, protect against abuse of Steam Open ID auth, reject requests containing unexpected auth properties
+            if (request.AuthenticationProperties?.Any(x => !AllowedAuthenticationPropertyNames.Contains(x.Key)) == true)
+            {
+                throw new ArgumentException(nameof(request), "Unexpected auth properties detected");
+            }   
+
             // Obtain the actual steam id from the login claim
             // e.g. https://steamcommunity.com/openid/id/<steamid>
-            var steamId = Regex.Match(request.Claim, Constants.SteamLoginClaimSteamIdRegex).Groups.OfType<Capture>().LastOrDefault()?.Value;
+            var steamId = Regex.Match(request.NameId, Constants.SteamLoginClaimSteamIdRegex).Groups.OfType<Capture>().LastOrDefault()?.Value;
             if (string.IsNullOrEmpty(steamId))
             {
                 throw new ArgumentException(nameof(request), $"Unable to parse SteamID from '{steamId}'");
