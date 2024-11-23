@@ -20,7 +20,7 @@
 		<!-- Generation file must be enabled to get accurate results when using ReferenceTimmer -->
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<!-- Suppress XML doc comment issues to avoid errors when using ReferenceTrimmer -->
-		<NoWarn>$(NoWarn);CS0419;CS1570;CS1573;CS1574;CS1584;CS1591;SA1602</NoWarn>
+		<NoWarn>$(NoWarn);CS0419;CS1570;CS1573;CS1574;CS1584;CS1591;CS1658;SA1602</NoWarn>
 		<!-- 
 		    Escalate warnings to errors for:
 		    IDE0005: Remove unnecessary using directives
