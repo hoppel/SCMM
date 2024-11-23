@@ -53,7 +53,7 @@ namespace SCMM.Market.RapidSkins.Client
                             appIds = new ulong[] {
                                 UInt64.Parse(appId)
                             },
-                            search = (string?) null,
+                            search = (string) null,
                             cs2ItemCategories = new string[] { },
                             rustItemCategories = new string[] { },
                             itemExteriors = new string[] { },

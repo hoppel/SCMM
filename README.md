@@ -20,11 +20,11 @@ SCMM started as a personal project to gain practical and hands-on experience usi
 TODO: Document this...
 
 You will need:
-- [Visual Studio](https://visualstudio.microsoft.com/vs/community/) (2022/v17.7+) with the following workloads and components installed:
+- [Visual Studio](https://visualstudio.microsoft.com/vs/community/) (2022/v17.13+) with the following workloads and components installed:
   - ASP.NET and web development
     - .NET SDK
-    - .NET 7.0 Runtime
-    - .NET 7.0 WebAssembly Build Tools
+    - .NET 9.0 Runtime
+    - .NET 9.0 WebAssembly Build Tools
   - Azure development
     - Azure Compute Emulator 
     - [Azure Storage Emulator](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-emulator#get-the-storage-emulator)

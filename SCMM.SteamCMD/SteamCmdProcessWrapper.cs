@@ -63,7 +63,7 @@ public class SteamCmdProcessWrapper : ISteamConsoleClient
         return File.Exists(steamCmdExecutablePath);
     }
 
-    public async Task<WebFileData?> DownloadWorkshopFile(string appId, string workshopFileId, bool clearCache = true)
+    public async Task<WebFileData> DownloadWorkshopFile(string appId, string workshopFileId, bool clearCache = true)
     {
         var workshopFileName = $"{appId}-{workshopFileId}.zip";
         var workshopFileBasePath = $"{SteamCmdRootPath}{Path.DirectorySeparatorChar}steamapps{Path.DirectorySeparatorChar}workshop{Path.DirectorySeparatorChar}content{Path.DirectorySeparatorChar}{appId}{Path.DirectorySeparatorChar}{workshopFileId}";

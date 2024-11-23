@@ -1,12 +1,3 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>true</ImplicitUsings>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\SCMM.Shared.Data.Models\SCMM.Shared.Data.Models.csproj" />
-  </ItemGroup>
-
 </Project>

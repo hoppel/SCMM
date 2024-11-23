@@ -191,25 +191,23 @@ namespace SCMM.Steam.Data.Models.Enums
 
         /*
          
-         MARKETS TO BE INVESTIGATED
-         BUY:  https://skinsdrip.com/ 
-         BUY:  https://skin.land/market/rust/
-         BUY:  https://rustysaloon.com/withdraw (gambling site)
-         BUY:  https://bandit.camp/ (gambling site)
-         BUY:  https://buff.market/ (western sister-site for https://buff.163.com/, no rust)
-         BUY:  https://gameflip.com/shop/in-game-items/rust?status=onsale&limit=100&platform=252490&sort=price%3Aasc (has low stock)
-         BUY:  https://lis-skins.ru/market/rust/ (has overly aggressive CloudFlare WAF policies, need to scrap HTML code)
-         BUY:  https://gamerall.com/rust (has overly aggressive CloudFlare WAF policies)
-         SELL: https://rustysell.com/
-         SELL: https://skincashier.com/
-         SELL: https://skins.cash/
-
-         SUS LOOKING MARKETS
-         BUY:  https://trade.skin/
-         BUY:  https://rustplus.com/
-         BUY:  https://www.rustreaper.com/marketplace/RUST (bad reviews)
-
-         MARKET AGGRAGATORS
+         MARKETS TO BE INVESTIGATED:
+         BUY:    https://skin.land/market/rust/
+         BUY:    https://buff.market/ (western sister-site for https://buff.163.com/, no rust)
+         BUY:    https://gameflip.com/shop/in-game-items/rust?status=onsale&limit=100&platform=252490&sort=price%3Aasc (has low stock)
+         BUY:    https://lis-skins.ru/market/rust/ (has overly aggressive CloudFlare WAF policies, need to scrap HTML code)
+         BUY:    https://gamerall.com/rust (has overly aggressive CloudFlare WAF policies)
+         BUY:    https://traderust.com/
+         BUY:    https://skinsdrip.com/ 
+         SELL:   https://skincashier.com/
+         SELL:   https://skins.cash/
+         GAMBLE: https://bandit.camp/ (gambling site)
+         GAMBLE: https://rustbet.com (no inventory stock)
+         GAMBLE: https://rustchance.com/ (low inventory stock)
+         GAMBLE: https://rustreaper.com (bad reviews?)
+         GAMBLE: https://rustysaloon.com (dead?)
+         
+         MARKET AGGRAGATORS:
          https://pricempire.com/api
 
         */

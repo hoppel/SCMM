@@ -1,0 +1,36 @@
+<Project>
+	
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>true</ImplicitUsings>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Authors>Rhys Koedijk</Authors>
+		<Description>Steam Community Market Manager (SCMM)</Description>
+		<Copyright>Copyright © 2021-2024 Rhys Koedijk</Copyright>
+	</PropertyGroup>
+
+	<!-- 
+		Use ReferenceTrimmer to escalate "unnesscary reference" warnings as errors; Reduces project and package bloat.
+		https://github.com/dfederm/ReferenceTrimmer
+	-->
+	<PropertyGroup>
+		<!-- Generation file must be enabled to get accurate results when using ReferenceTimmer -->
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<!-- Suppress XML doc comment issues to avoid errors when using ReferenceTrimmer -->
+		<NoWarn>$(NoWarn);CS0419;CS1570;CS1573;CS1574;CS1584;CS1591;SA1602</NoWarn>
+		<!-- 
+		    Escalate warnings to errors for:
+		    IDE0005: Remove unnecessary using directives
+		    RT0000:  Enable documentation generation for accuracy of used references detection
+		    RT0001:  Unnecessary reference
+		    RT0002:  Unnecessary project reference
+            RT0003:  Unnecessary package reference
+		-->
+		<WarningsAsErrors>$(WarningsAsErrors);IDE0005;RT0000;RT0001;RT0002;RT0003</WarningsAsErrors>
+		<MSBuildWarningsAsErrors>$(WarningsAsErrors)</MSBuildWarningsAsErrors>
+	</PropertyGroup>
+
+</Project>

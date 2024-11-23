@@ -1,19 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>true</ImplicitUsings>
-  </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Discord.Net" Version="3.16.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
+    <PackageReference Include="Discord.Net" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\SCMM.Shared.API\SCMM.Shared.API.csproj" />
     <ProjectReference Include="..\SCMM.Shared.Web.Client\SCMM.Shared.Web.Client.csproj" />
   </ItemGroup>
-
 </Project>

@@ -447,7 +447,6 @@ public static class WebApplicationExtensions
         );
 
         app.UseBlazorFrameworkFiles(); // Wasm
-        app.UseStaticFiles();
 
         app.UseRouting();
 
@@ -455,6 +454,8 @@ public static class WebApplicationExtensions
         app.UseAuthorization();
 
         app.UseOutputCache();
+
+        app.MapStaticAssets();
 
         app.MapControllers();
         app.MapDefaultControllerRoute();
