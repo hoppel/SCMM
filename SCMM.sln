@@ -56,6 +56,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A5AFCC31-F308-4FE4-9330-9EF05F72C4F4}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.github\dependabot.yml = .github\dependabot.yml
 		Directory.Build.props = Directory.Build.props
 		Directory.Packages.props = Directory.Packages.props
 		README.md = README.md
@@ -128,6 +129,13 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SCMM.Market.SnipeSkins.Client", "SCMM.Market.SnipeSkins.Client\SCMM.Market.SnipeSkins.Client.csproj", "{8CB365F6-D035-4D07-ACDA-BB828AAABDDB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCMM.Market.RustSkins.Client", "SCMM.Market.RustSkins.Client\SCMM.Market.RustSkins.Client.csproj", "{8A7EE894-A0D3-4D6D-82C6-21283A1ECEEA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pipelines", "Pipelines", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		.github\dependabot.yml = .github\dependabot.yml
+		.github\workflows\github-action-build-and-deploy.yml = .github\workflows\github-action-build-and-deploy.yml
+		.github\workflows\github-action-build-and-test.yml = .github\workflows\github-action-build-and-test.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -833,6 +841,7 @@ Global
 		{4D2911DA-FC67-4E32-8FEF-94B99E53B6A5} = {8AE530FB-A593-4733-AF49-D1AFE5E5C01E}
 		{8CB365F6-D035-4D07-ACDA-BB828AAABDDB} = {8AE530FB-A593-4733-AF49-D1AFE5E5C01E}
 		{8A7EE894-A0D3-4D6D-82C6-21283A1ECEEA} = {8AE530FB-A593-4733-AF49-D1AFE5E5C01E}
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {A5AFCC31-F308-4FE4-9330-9EF05F72C4F4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {53C48CAC-8050-44A2-B930-9273F442173C}
