@@ -61,8 +61,8 @@ namespace SCMM.Steam.Data.Models.Enums
 
         // TODO: Items quantities are not currently supported
         [Display(Name = "CS.Deals")]
-        [Market(Constants.RustAppId, Constants.CSGOAppId, Color = "#78FFFF")]
-        [BuyFrom(Url = "https://cs.deals/market/{1}/?name={3}&sort=price", AcceptedPayments = PriceFlags.Cash | PriceFlags.Crypto)]
+        [Market(Constants.RustAppId, Constants.CSGOAppId, Color = "#78FFFF", AffiliateUrl = "https://csdeals.com/new/?ref=njq0nty")]
+        [BuyFrom(Url = "https://cs.deals/new?ref=njq0nty&game={1}&sort=price&sort_desc=0&name={3}", AcceptedPayments = PriceFlags.Cash | PriceFlags.Crypto)]
         CSDealsMarketplace = 16,
 
         // TODO: Update web client to support new APIs
