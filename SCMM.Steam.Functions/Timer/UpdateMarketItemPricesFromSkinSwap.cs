@@ -70,7 +70,6 @@ public class UpdateMarketItemPricesFromSkinSwap
         {
             stopwatch.Start();
 
-
             var skinSwapAppItems = new List<SkinSwapItem>();
             var skinSwapResponse = (SkinSwapResponse<SkinSwapItem[]>)null;
             var offset = 0;
@@ -100,7 +99,7 @@ public class UpdateMarketItemPricesFromSkinSwap
                 if (item != null)
                 {
                     var supply = skinSwapAppItem.Overstock?.Count;
-                    var price = skinSwapAppItem.Price?.Buy ?? 0;
+                    var price = skinSwapAppItem.Price?.Trade ?? 0;
                     item.UpdateBuyPrices(SkinSwap, new PriceWithSupply
                     {
                         Price = supply > 0 && price > 0 ? item.Currency.CalculateExchange(price, usdCurrency.ExchangeRateMultiplier) : 0,
