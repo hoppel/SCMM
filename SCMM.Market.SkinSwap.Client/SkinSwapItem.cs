@@ -10,10 +10,10 @@ namespace SCMM.Market.SkinSwap.Client
         [JsonPropertyName("market_hash_name")]
         public string MarketHashName { get; set; }
 
-        [JsonPropertyName("amount")]
-        public int Amount { get; set; }
-
         [JsonPropertyName("price")]
-        public decimal Price { get; set; }
+        public SkinSwapItemPrice Price { get; set; }
+
+        [JsonPropertyName("overstock")]
+        public SkinSwapItemOverstock Overstock { get; set; }
     }
 }

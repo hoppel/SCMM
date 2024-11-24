@@ -9,5 +9,9 @@ namespace SCMM.Market.SkinSwap.Client
 
         [JsonPropertyName("data")]
         public T Data { get; set; }
+
+        [JsonPropertyName("endOfResults")]
+        public bool? EndOfResults { get; set; }
+
     }
 }

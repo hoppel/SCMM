@@ -118,7 +118,6 @@ namespace SCMM.Steam.Data.Models.Enums
         [BuyFrom(Url = "https://skinsmonkey.com/trade", AcceptedPayments = PriceFlags.Trade)]
         SkinsMonkey = 25,
 
-        [Obsolete("APIs have changed, web client needs updating")]
         [Display(Name = "Skin Swap")]
         [Market(Constants.RustAppId, Constants.CSGOAppId, Color = "#FF4B4B", AffiliateUrl = "https://skinswap.com/r/scmm")]
         [BuyFrom(Url = "https://skinswap.com/r/scmm", AcceptedPayments = PriceFlags.Cash | PriceFlags.Crypto, BonusBalanceMultiplier = 0.71428571428571428571428571428571f /* 40% */)]

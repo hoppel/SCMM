@@ -55,15 +55,14 @@ public class UpdateMarketItemPricesFromSkinSwap
             return;
         }
 
-        var skinSwapItems = Enumerable.Empty<SkinSwapItem>();
         foreach (var app in supportedSteamApps)
         {
             logger.LogTrace($"Updating item price information from SkinSwap (appId: {app.SteamId})");
-            skinSwapItems = await UpdateSkinSwapMarketPricesForApp(logger, app, usdCurrency, skinSwapItems);
+            await UpdateSkinSwapMarketPricesForApp(logger, app, usdCurrency);
         }
     }
 
-    private async Task<IEnumerable<SkinSwapItem>> UpdateSkinSwapMarketPricesForApp(ILogger logger, SteamApp app, SteamCurrency usdCurrency, IEnumerable<SkinSwapItem> skinSwapItems)
+    private async Task UpdateSkinSwapMarketPricesForApp(ILogger logger, SteamApp app, SteamCurrency usdCurrency)
     {
         var statisticsKey = String.Format(StatisticKeys.MarketStatusByAppId, app.SteamId);
         var stopwatch = new Stopwatch();
@@ -71,11 +70,19 @@ public class UpdateMarketItemPricesFromSkinSwap
         {
             stopwatch.Start();
 
-            // The SkinSwap API returns all items for all apps, so make sure we only request them once even if this function is called multiple times (for multiple app updates)
-            if (!skinSwapItems.Any())
+
+            var skinSwapAppItems = new List<SkinSwapItem>();
+            var skinSwapResponse = (SkinSwapResponse<SkinSwapItem[]>)null;
+            var offset = 0;
+            do
             {
-                skinSwapItems = await _skinSwapWebClient.GetItemsAsync();
-            }
+                skinSwapResponse = await _skinSwapWebClient.GetSiteInventoryAsync(app.SteamId, offset);
+                if (skinSwapResponse.Data?.Any() == true)
+                {
+                    skinSwapAppItems.AddRange(skinSwapResponse.Data);
+                }
+                offset += skinSwapResponse.Data?.Length ?? 0;
+            } while (skinSwapResponse?.EndOfResults != true);
 
             var dbItems = await _db.SteamMarketItems
                 .Where(x => x.AppId == app.Id)
@@ -87,23 +94,22 @@ public class UpdateMarketItemPricesFromSkinSwap
                 })
                 .ToListAsync();
 
-            var skinSwapItemGroups = skinSwapItems.GroupBy(x => x.MarketHashName);
-            foreach (var skinSwapItemGroup in skinSwapItemGroups)
+            foreach (var skinSwapAppItem in skinSwapAppItems)
             {
-                var item = dbItems.FirstOrDefault(x => x.Name == skinSwapItemGroup.Key)?.Item;
+                var item = dbItems.FirstOrDefault(x => x.Name == skinSwapAppItem.MarketHashName)?.Item;
                 if (item != null)
                 {
-                    var supply = skinSwapItemGroup.Sum(x => x.Amount);
-                    var price = skinSwapItemGroup.Min(x => x.Price);
+                    var supply = skinSwapAppItem.Overstock?.Count;
+                    var price = skinSwapAppItem.Price?.Buy ?? 0;
                     item.UpdateBuyPrices(SkinSwap, new PriceWithSupply
                     {
-                        Price = supply > 0 && price > 0 ? item.Currency.CalculateExchange(price / usdCurrency.ExchangeRateMultiplier) : 0,
+                        Price = supply > 0 && price > 0 ? item.Currency.CalculateExchange(price, usdCurrency.ExchangeRateMultiplier) : 0,
                         Supply = supply
                     });
                 }
             }
 
-            var missingItems = dbItems.Where(x => !skinSwapItems.Any(y => x.Name == y.MarketHashName) && x.Item.BuyPrices.ContainsKey(SkinSwap));
+            var missingItems = dbItems.Where(x => !skinSwapAppItems.Any(y => x.Name == y.MarketHashName) && x.Item.BuyPrices.ContainsKey(SkinSwap));
             foreach (var missingItem in missingItems)
             {
                 missingItem.Item.UpdateBuyPrices(SkinSwap, null);
@@ -113,8 +119,8 @@ public class UpdateMarketItemPricesFromSkinSwap
 
             await _statisticsService.PatchDictionaryValueAsync<MarketType, MarketStatusStatistic>(statisticsKey, SkinSwap, x =>
             {
-                x.TotalItems = skinSwapItemGroups.Count();
-                x.TotalListings = skinSwapItemGroups.Sum(x => x.Sum(y => y.Amount));
+                x.TotalItems = skinSwapAppItems.Count();
+                x.TotalListings = skinSwapAppItems.Sum(x => x.Overstock?.Count ?? 0);
                 x.LastUpdatedItemsOn = DateTimeOffset.Now;
                 x.LastUpdatedItemsDuration = stopwatch.Elapsed;
                 x.LastUpdateErrorOn = null;
@@ -141,7 +147,5 @@ public class UpdateMarketItemPricesFromSkinSwap
         {
             stopwatch.Stop();
         }
-
-        return skinSwapItems;
     }
 }
