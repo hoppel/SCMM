@@ -65,7 +65,7 @@
     <PackageVersion Include="SixLabors.ImageSharp" Version="3.1.6" />
     <PackageVersion Include="SixLabors.ImageSharp.Drawing" Version="2.1.4" />
     <PackageVersion Include="SocketIOClient" Version="3.1.2" />
-    <PackageVersion Include="StackExchange.Redis" Version="2.8.16" />
+    <PackageVersion Include="StackExchange.Redis" Version="2.8.22" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="7.1.0" />
     <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="7.1.0" />
     <PackageVersion Include="Swashbuckle.AspNetCore.Filters" Version="8.0.2" />
