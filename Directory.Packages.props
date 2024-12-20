@@ -61,7 +61,7 @@
     <PackageVersion Include="MudBlazor" Version="6.20.0" />
     <PackageVersion Include="Polly" Version="8.5.0" />
     <PackageVersion Include="Polly.Extensions.Http" Version="3.0.0" />
-    <PackageVersion Include="SixLabors.Fonts" Version="2.0.6" />
+    <PackageVersion Include="SixLabors.Fonts" Version="2.0.7" />
     <PackageVersion Include="SixLabors.ImageSharp" Version="3.1.6" />
     <PackageVersion Include="SixLabors.ImageSharp.Drawing" Version="2.1.4" />
     <PackageVersion Include="SocketIOClient" Version="3.1.2" />
