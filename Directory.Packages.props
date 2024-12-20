@@ -72,7 +72,7 @@
     <PackageVersion Include="Syncfusion.Blazor.Charts" Version="27.2.3" />
     <PackageVersion Include="Syncfusion.Blazor.Themes" Version="27.2.3" />
     <PackageVersion Include="xunit" Version="2.9.2" />
-    <PackageVersion Include="xunit.runner.visualstudio" Version="2.8.2" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="3.0.0" />
   </ItemGroup>
   <ItemGroup>
     <!-- Vulnerable transitive packages; Pin to the next non-vulnerable version -->
