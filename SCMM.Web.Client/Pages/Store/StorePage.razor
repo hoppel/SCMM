@@ -499,7 +499,7 @@ else if (StoreList.Any())
                                                         @if (!String.IsNullOrEmpty(item.WorkshopFileUrl))
                                                         {
                                                             <MudButton OnClick="@(() => ViewItemInteractiveModel(item))" Variant="MudBlazor.Variant.Filled" Color="MudBlazor.Color.Secondary" StartIcon="fas fa-fw fa-arrows-rotate" Size="@Size.Small"
-                                                                       Class="ml-2" Disabled="State.IsPrerendering" title="Click to view an interactive 3D render of this item on rust360.com">     
+                                                                       Class="ml-2" Disabled="State.IsPrerendering" title="Click to view an interactive 3D render of this item on RustHelp.com">     
                                                                 <strong>360</strong>
                                                             </MudButton>
                                                         }
@@ -791,7 +791,7 @@ else
     private void ViewItemInteractiveModel(StoreItemDetailsDTO item)
     {
         ExternalNavigationManager.NavigateToNewTabAsync(
-            $"https://rust360.com/{item.WorkshopFileId}"
+            $"https://rusthelp.com/tools/skins/{item.WorkshopFileId}"
         );
         /*
         Dialogs.Show<ViewItemModelDialog>(null, parameters: new DialogParameters()

@@ -55,8 +55,8 @@
                                             <span class="no-wrap">Workshop</span>
                                         </MudButton>
 								    </MudTooltip>
-                                    <MudTooltip Text="Click to view an interactive 3D render of this item on rust360.com">
-                                        <MudButton OnClick="@ViewItemInteractiveModel" Disabled="String.IsNullOrEmpty(Item.WorkshopFileUrl) || State.IsPrerendering">
+                                    <MudTooltip Text="Click to view an interactive 3D render of this item on RustHelp.com">
+                                        <MudButton OnClick="@ViewItemInteractiveModel" Disabled="State.IsPrerendering">
                                             <i class="fas fa-fw fa-arrows-rotate mr-1"></i>
                                             <span class="no-wrap">360</span>
                                         </MudButton>
@@ -1379,7 +1379,7 @@
     private void ViewItemInteractiveModel()
     {
         ExternalNavigationManager.NavigateToNewTabAsync(
-            $"https://rust360.com/{Item.WorkshopFileId}"
+            $"https://rusthelp.com/tools/skins/{Item.WorkshopFileId}"
         );
         /*
         Dialogs.Show<ViewItemModelDialog>(null, parameters: new DialogParameters()
